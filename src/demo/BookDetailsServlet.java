@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import model.*;
 
 /**
  * Created by Leon Tan on 11/5/15.
@@ -21,8 +22,8 @@ public class BookDetailsServlet extends HttpServlet {
         try {
             String bookId = request.getParameter("bookId");
             if (bookId != null) {
-                BookDBAO db = new BookDBAO();
-                BookDetails bd = db.getBookDetails(bookId);
+                BookDAO db = new BookDAO();
+                BooksEntity bd = db.getBookDetails(bookId);
                 // store bookdetails object in request scope with attribut name "book"
                 // bookdetails.jsp will retrieve this stored object later to display the content
                 request.setAttribute("book", bd);
